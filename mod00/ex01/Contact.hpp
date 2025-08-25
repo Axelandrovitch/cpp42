@@ -1,4 +1,3 @@
-#include <iostream>
 #include <string>
 
 class Contact{
@@ -8,56 +7,21 @@ class Contact{
     std::string lastName;
     std::string nickName;
     std::string darkestSecret;
-    unsigned int phoneNumber;
+    std::string phoneNumber;
 
   public:
     Contact(void);
     ~Contact(void);
 
-    bool setName(std::string name){
-      if (name.length() == 0)
-        return false;
+    bool setName(const std::string& name);
+    bool setLastName(const std::string& lastName);
+    bool setNickName(const std::string& nickName);
+    bool setDarkestSecret(const std::string& darkestSecret);
+    bool setPhoneNumber(const std::string& phoneNumber);
 
-      this->name = name;
-
-      return true;
-    }
-
-    bool setLastName(std::string lastName){
-      if (lastName.length() == 0)
-        return false;
-
-      this->lastName= lastName;
-
-      return true;
-    }
-
-    bool setNickName(std::string nickName){
-      if (nickName.length() == 0)
-        return false;
-
-      this->nickName = nickName;
-
-      return true;
-    }
-
-    bool setDarkestSecret(std::string darkestSecret){
-      if (darkestSecret.length() == 0)
-        return false;
-
-      this->darkestSecret= darkestSecret;
-
-      return true;
-    }
-
-    bool setPhoneNumber(std::string phoneNumber){
-      long long int longPhoneNumber = std::stoll(phoneNumber);
-      if (longPhoneNumber <= 0 || longPhoneNumber > 999999999999)
-      {
-        std::cout << "Invalid phone number" << std::endl;
-        std::cout << "Valid phone number must be between 0 and 999,999,999,999" << std::endl;
-        return false;
-      }
-      return true;
-    }
+    std::string getName();
+    std::string getLastName();
+    std::string getNickName();
+    std::string getDarkestSecret();
+    std::string getPhoneNumber();
 };
