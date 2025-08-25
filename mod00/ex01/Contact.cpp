@@ -1,55 +1,24 @@
 #include "Contact.hpp"
 #include <iostream>
 
-bool Contact::setName(const std::string& name){
-  if (name.empty())
-    return false;
-
+void Contact::setName(const std::string& name){
   this->name = name;
-
-  return true;
 }
 
-bool Contact::setLastName(const std::string& lastName){
-  if (lastName.empty())
-    return false;
-
+void Contact::setLastName(const std::string& lastName){
   this->lastName= lastName;
-
-  return true;
 }
 
-bool Contact::setNickName(const std::string& nickName){
-  if (nickName.empty())
-    return false;
-
+void Contact::setNickName(const std::string& nickName){
   this->nickName = nickName;
-
-  return true;
 }
 
-bool Contact::setDarkestSecret(const std::string& darkestSecret){
-  if (darkestSecret.empty())
-    return false;
-
+void Contact::setDarkestSecret(const std::string& darkestSecret){
   this->darkestSecret= darkestSecret;
-
-  return true;
 }
 
-bool Contact::setPhoneNumber(const std::string& phoneNumber){
-  if (phoneNumber.empty())
-    return false;
-  for (size_t i = 0; i < phoneNumber.length(); ++i) {
-    char c = phoneNumber[i];
-    if (!std::isdigit(c)) {
-      std::cout << "Invalid phone number: digits only" << std::endl;
-      return false;
-    }
-  }
+void Contact::setPhoneNumber(const std::string& phoneNumber){
   this->phoneNumber = phoneNumber;
-
-  return true;
 }
 
 std::string Contact::getName() { return this->name;}
