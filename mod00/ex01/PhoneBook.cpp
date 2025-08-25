@@ -1,35 +1,63 @@
 #include "PhoneBook.hpp"
-#include <iomanip>
 
-PhoneBook::PhoneBook(void) : count(0), oldest(0) {}
-PhoneBook::~PhoneBook(void) {}
+PhoneBook::PhoneBook() : count(0), oldest(0) {}
+PhoneBook::~PhoneBook() {}
+PhoneBook::PhoneBook(const PhoneBook& other) { *this = other; }
+PhoneBook& PhoneBook::operator=(const PhoneBook& other) {
+    if (this != &other) {
+        this->count = other.count;
+        this->oldest = other.oldest;
+        for (int i = 0; i < 8; i++)
+            this->contacts[i] = other.contacts[i];
+    }
+    return *this;
+}
+
+static std::string truncateField(const std::string &str) {
+    if (str.length() > 10)
+        return str.substr(0, 9) + ".";
+    return str;
+}
 
 void PhoneBook::addContact() {
     std::string input;
-    std::string values[5];
     Contact newContact;
 
     std::cout << "First name: ";
     std::getline(std::cin, input);
-    while (!newContact.setName(input)) { std::cout << "Invalid. Retry: "; std::getline(std::cin, input); }
+    while (!newContact.setName(input)) {
+        std::cout << "Invalid. Retry: ";
+        std::getline(std::cin, input);
+    }
 
     std::cout << "Last name: ";
     std::getline(std::cin, input);
-    while (!newContact.setLastName(input)) { std::cout << "Invalid. Retry: "; std::getline(std::cin, input); }
+    while (!newContact.setLastName(input)) {
+        std::cout << "Invalid. Retry: ";
+        std::getline(std::cin, input);
+    }
 
     std::cout << "Nickname: ";
     std::getline(std::cin, input);
-    while (!newContact.setNickName(input)) { std::cout << "Invalid. Retry: "; std::getline(std::cin, input); }
+    while (!newContact.setNickName(input)) {
+        std::cout << "Invalid. Retry: ";
+        std::getline(std::cin, input);
+    }
 
     std::cout << "Phone number: ";
     std::getline(std::cin, input);
-    while (!newContact.setPhoneNumber(input)) { std::cout << "Invalid. Retry: "; std::getline(std::cin, input); }
+    while (!newContact.setPhoneNumber(input)) {
+        std::cout << "Invalid. Retry: ";
+        std::getline(std::cin, input);
+    }
 
     std::cout << "Darkest secret: ";
     std::getline(std::cin, input);
-    while (!newContact.setDarkestSecret(input)) { std::cout << "Invalid. Retry: "; std::getline(std::cin, input); }
+    while (!newContact.setDarkestSecret(input)) {
+        std::cout << "Invalid. Retry: ";
+        std::getline(std::cin, input);
+    }
 
-    // Remplacement circulaire
     if (count < 8) {
         contacts[count] = newContact;
         count++;
@@ -37,12 +65,6 @@ void PhoneBook::addContact() {
         contacts[oldest] = newContact;
         oldest = (oldest + 1) % 8;
     }
-}
-
-static std::string truncateField(const std::string &str) {
-    if (str.length() > 10)
-        return str.substr(0, 9) + ".";
-    return str;
 }
 
 void PhoneBook::displayContacts() const {
@@ -70,12 +92,12 @@ void PhoneBook::searchContact() const {
     std::string input;
     std::getline(std::cin, input);
 
-    if (input.length() != 1 || !std::isdigit(input[0])) {
+    if (input.empty() || input.find_first_not_of("0123456789") != std::string::npos) {
         std::cout << "Invalid index." << std::endl;
         return;
     }
 
-    int index = input[0] - '0';
+    int index = std::atoi(input.c_str());
     if (index < 0 || index >= count) {
         std::cout << "Invalid index." << std::endl;
         return;
