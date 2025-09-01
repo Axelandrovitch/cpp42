@@ -1,14 +1,14 @@
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook() : count(0), oldest(0) {}
+PhoneBook::PhoneBook() : _count(0), _oldest(0) {}
 PhoneBook::~PhoneBook() {}
 PhoneBook::PhoneBook(const PhoneBook& other) { *this = other; }
 PhoneBook& PhoneBook::operator=(const PhoneBook& other) {
     if (this != &other) {
-        this->count = other.count;
-        this->oldest = other.oldest;
+        this->_count = other._count;
+        this->_oldest = other._oldest;
         for (int i = 0; i < 8; i++)
-            this->contacts[i] = other.contacts[i];
+            this->_contacts[i] = other._contacts[i];
     }
     return *this;
 }
@@ -58,12 +58,12 @@ void PhoneBook::addContact() {
         std::getline(std::cin, input);
     }
 
-    if (count < 8) {
-        contacts[count] = newContact;
-        count++;
+    if (_count < 8) {
+        _contacts[_count] = newContact;
+        _count++;
     } else {
-        contacts[oldest] = newContact;
-        oldest = (oldest + 1) % 8;
+        _contacts[_oldest] = newContact;
+        _oldest = (_oldest + 1) % 8;
     }
 }
 
@@ -73,16 +73,16 @@ void PhoneBook::displayContacts() const {
               << std::setw(10) << "Last Name" << "|"
               << std::setw(10) << "Nickname" << std::endl;
 
-    for (int i = 0; i < count; i++) {
+    for (int i = 0; i < _count; i++) {
         std::cout << std::setw(10) << i << "|"
-                  << std::setw(10) << truncateField(contacts[i].getName()) << "|"
-                  << std::setw(10) << truncateField(contacts[i].getLastName()) << "|"
-                  << std::setw(10) << truncateField(contacts[i].getNickName()) << std::endl;
+                  << std::setw(10) << truncateField(_contacts[i].getName()) << "|"
+                  << std::setw(10) << truncateField(_contacts[i].getLastName()) << "|"
+                  << std::setw(10) << truncateField(_contacts[i].getNickName()) << std::endl;
     }
 }
 
 void PhoneBook::searchContact() const {
-    if (count == 0) {
+    if (_count == 0) {
         std::cout << "PhoneBook is empty." << std::endl;
         return;
     }
@@ -98,15 +98,15 @@ void PhoneBook::searchContact() const {
     }
 
     int index = std::atoi(input.c_str());
-    if (index < 0 || index >= count) {
+    if (index < 0 || index >= _count) {
         std::cout << "Invalid index." << std::endl;
         return;
     }
 
-    std::cout << "First name: " << contacts[index].getName() << std::endl;
-    std::cout << "Last name: " << contacts[index].getLastName() << std::endl;
-    std::cout << "Nickname: " << contacts[index].getNickName() << std::endl;
-    std::cout << "Phone number: " << contacts[index].getPhoneNumber() << std::endl;
-    std::cout << "Darkest secret: " << contacts[index].getDarkestSecret() << std::endl;
+    std::cout << "First name: " << _contacts[index].getName() << std::endl;
+    std::cout << "Last name: " << _contacts[index].getLastName() << std::endl;
+    std::cout << "Nickname: " << _contacts[index].getNickName() << std::endl;
+    std::cout << "Phone number: " << _contacts[index].getPhoneNumber() << std::endl;
+    std::cout << "Darkest secret: " << _contacts[index].getDarkestSecret() << std::endl;
 }
 
