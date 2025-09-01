@@ -1,10 +1,10 @@
 #include "PhoneBook.hpp"
 
-int main() {
+int main(void) {
     PhoneBook phoneBook;
     std::string command;
 
-    std::cout << "Welcome to My Awesome PhoneBook!" << std::endl;
+    std::cout << "Phonebook" << std::endl;
     while (true) {
         std::cout << "Enter command (ADD, SEARCH, EXIT): ";
         std::getline(std::cin, command);
