@@ -4,10 +4,9 @@ SRC         = Weapon.cpp \
 							HumanB.cpp   \
 							main.cpp
 OBJ         = $(SRC:.cpp=.o)
-CC         = g++
+CC         = c++
 CCFLAGS    = -Wall -Wextra -Werror -g -std=c++98
 
-# Règles
 all: $(NAME)
 
 $(NAME): $(OBJ) Makefile Weapon.hpp 
