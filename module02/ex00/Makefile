@@ -6,7 +6,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 SRC = main.cpp Fixed.cpp
 OBJ = $(SRC:.cpp=.o)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) Makefile Fixed.hpp
 	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
 
 all: $(NAME)
