@@ -1,3 +1,5 @@
+#ifndef CLAPTRAP_HPP
+#define CLAPTRAP_HPP
 #include <iostream>
 
 class ClapTrap {
@@ -24,3 +26,5 @@ class ClapTrap {
     unsigned int getenergyPoints(void) const;
     unsigned int getattackDamage(void) const;
 };
+
+#endif

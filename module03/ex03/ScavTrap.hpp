@@ -14,4 +14,4 @@ class ScavTrap: public ClapTrap {
     void guardGate();
 };
 
-#endif
+#endif // !SCAVTRAP_HPP
