@@ -13,6 +13,6 @@ class DiamondTrap : public ScavTrap, public FragTrap {
     DiamondTrap& operator=(const DiamondTrap &other);
     ~DiamondTrap();
 
-    void WhoAmI();
+    void whoAmI();
 };
 #endif // !DIAMONDTRAP_HPP

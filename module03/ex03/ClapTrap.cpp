@@ -51,8 +51,6 @@ void ClapTrap::takeDamage(unsigned int amount) {
     return;
   }
 
-  _energyPoints--;
-
   if (_hitPoints < amount) {
     _hitPoints = 0;
   } else {
