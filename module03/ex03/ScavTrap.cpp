@@ -19,7 +19,7 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &other) {
     this->_energyPoints = other.getenergyPoints();
     this->_attackDamage = other.getattackDamage();
   }
-  std::cout << "ScavTrap" << _name << " constructed with Assigment Operator\n";
+  std::cout << "ScavTrap " << _name << " constructed with Assigment Operator\n";
   return *this;
 }
 
@@ -29,14 +29,14 @@ ScavTrap::~ScavTrap() {
 
 void ScavTrap::attack(const std::string& target) {
   if (_energyPoints <= 0 ) {
-    std::cout << "ScavTrap" << _name << " has no energy left and can't attack!\n";
+    std::cout << "ScavTrap " << _name << " has no energy left and can't attack!\n";
     return;
   }
   if (_hitPoints <= 0 ) {
-    std::cout << "ScavTrap" << _name << " is dead and can't attack!\n";
+    std::cout << "ScavTrap " << _name << " is dead and can't attack!\n";
     return;
   }
-  std::cout << "ScavTrap" << _name << " attacks "
+  std::cout << "ScavTrap " << _name << " attacks "
     << target << ", causing " << _attackDamage
     << " points of damage!\n";
   _energyPoints--;

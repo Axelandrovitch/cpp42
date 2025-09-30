@@ -1,20 +1,24 @@
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main() {
-    FragTrap frag("Fraggy");
+    DiamondTrap diamond("SuperDiamond");
     
-    frag.attack("Target1");
-    frag.takeDamage(20);
-    frag.beRepaired(15);
+    diamond.attack("Target1");
+    diamond.takeDamage(30);
+    diamond.beRepaired(20);
     
-    frag.highFivesGuys();
+    diamond.guardGate();
+    diamond.highFivesGuys();
+    diamond.WhoAmI();
     
-    FragTrap fragCopy(frag);
-    fragCopy.attack("Target2");
+    DiamondTrap diamondCopy(diamond);
+    diamondCopy.attack("Target2");
+    diamondCopy.WhoAmI();
     
-    FragTrap fragAssign("Temp");
-    fragAssign = frag;
-    fragAssign.highFivesGuys();
+    DiamondTrap diamondAssign("Temp");
+    diamondAssign = diamond;
+    diamondAssign.attack("Target3");
+    diamondAssign.WhoAmI();
     
     return 0;
 }
