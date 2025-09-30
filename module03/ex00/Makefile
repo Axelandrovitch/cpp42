@@ -10,6 +10,9 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(FLAGS) -o $(NAME) $(OBJ)
 
+%.o: %.cpp Makefile
+	$(CC) $(FLAGS) -c $< -o $@
+
 clean:
 	rm -f $(OBJ) $(DEP)
 
