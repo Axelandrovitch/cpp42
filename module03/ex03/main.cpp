@@ -9,16 +9,16 @@ int main() {
     
     diamond.guardGate();
     diamond.highFivesGuys();
-    diamond.WhoAmI();
+    diamond.whoAmI();
     
     DiamondTrap diamondCopy(diamond);
     diamondCopy.attack("Target2");
-    diamondCopy.WhoAmI();
+    diamondCopy.whoAmI();
     
     DiamondTrap diamondAssign("Temp");
     diamondAssign = diamond;
     diamondAssign.attack("Target3");
-    diamondAssign.WhoAmI();
+    diamondAssign.whoAmI();
     
     return 0;
 }

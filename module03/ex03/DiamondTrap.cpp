@@ -22,6 +22,9 @@ DiamondTrap::DiamondTrap(const DiamondTrap &other) :
   FragTrap(other),
   _name(other._name)
 {
+  _hitPoints = other._hitPoints;
+  _energyPoints = other._energyPoints;
+  _attackDamage = other._attackDamage;
   std::cout << "DiamondTrap " << _name << " copy constructed!\n";
 }
 
@@ -31,8 +34,11 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap& other) {
     ScavTrap::operator=(other);
     FragTrap::operator=(other);
     _name = other._name;
+    _hitPoints = other._hitPoints;
+    _energyPoints = other._energyPoints;
+    _attackDamage = other._attackDamage;
+    std::cout << "DiamondTrap " << _name << " assigned!\n";
   }
-  std::cout << "DiamondTrap " << _name << " assigned!\n";
   return *this;
 }
 
