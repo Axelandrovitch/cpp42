@@ -10,7 +10,7 @@ int main(void) {
     }
 
     try {
-        Bureaucrat bobbynator("bobbynator", 0);
+        Bureaucrat bobbynator("Bobbynator", 0);
         std::cout << bobbynator << std::endl;
     }
     catch (const Bureaucrat::GradeTooHighException& e) {
@@ -32,14 +32,14 @@ int main(void) {
     }
 
     try {
-        Bureaucrat dave("Dave", 149);
-        std::cout << dave << std::endl;
+        Bureaucrat bobbynow("Bobbynow", 149);
+        std::cout << bobbynow<< std::endl;
 
-        dave.decrementGrade();
-        std::cout << "After decrement: " << dave << std::endl;
+        bobbynow.decrementGrade();
+        std::cout << "After decrement: " << bobbynow << std::endl;
 
-        dave.decrementGrade();
-        std::cout << "After decrement: " << dave << std::endl;
+        bobbynow.decrementGrade();
+        std::cout << "After decrement: " << bobbynow << std::endl;
     }
     catch (const Bureaucrat::GradeTooLowException& e) {
         std::cerr << "Error: " << e.what() << std::endl;
